@@ -1,0 +1,4 @@
+NewsSender
+==========
+
+Newsletter Bulk Sender
