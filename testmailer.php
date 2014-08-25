@@ -1,7 +1,8 @@
 <?php
 	error_reporting(E_ALL);
  	ini_set('display_errors', 1);
-
+	
+	date_default_timezone_set('America/Argentina/Buenos_Aires');
 	require 'vendor/autoload.php';
 	
 	#Namespace for Amazon SES Client
@@ -39,5 +40,5 @@
 			),
 		));
 	echo $result;
-	echo 'hola';
+	//echo 'hola';
 ?>
