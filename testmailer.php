@@ -5,7 +5,7 @@
 	require 'vendor/autoload.php';
 	
 	#Namespace for Amazon SES Client
-	use 'Aws\Ses\SesClient';
+	use Aws\Ses\SesClient;
 	
 	$client = SesClient::factory(array(
     	'profile' => 'default',
