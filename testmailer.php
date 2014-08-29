@@ -1,7 +1,7 @@
 <?php
-	error_reporting(E_ALL);
- 	ini_set('display_errors', 1);
-	
+	#error_reporting(E_ALL);
+ 	#ini_set('display_errors', 1);
+	//This must be moved to a separate config file
 	date_default_timezone_set('America/Argentina/Buenos_Aires');
 	require 'vendor/autoload.php';
 	
