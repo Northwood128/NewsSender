@@ -3,11 +3,13 @@ body {
   padding-bottom: 40px;
   background-color: #eee;
 }
-
 .login-form {
+  background: #DDD;
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
+  border: 1px solid #CCC;
+  box-shadow: 0 0 3px #000000;
 }
 .login-form .form-login-heading,
 .login-form .checkbox {
@@ -20,8 +22,8 @@ body {
   position: relative;
   height: auto;
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+ -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding: 10px;
   font-size: 16px;
 }
@@ -40,6 +42,7 @@ body {
 }
 .NS-navbar {
 	background-color: #494;
+	box-shadow: 0px 3px 5px #000;
 }
 .navbar-nav>li>a:hover{
 	background-color: #484;
