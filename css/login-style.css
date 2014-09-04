@@ -9,7 +9,7 @@ body {
   padding: 15px;
   margin: 0 auto;
   border: 1px solid #CCC;
-  box-shadow: 0 0 3px #000000;
+  box-shadow: 0 0 2px #000000;
 }
 .login-form .form-login-heading,
 .login-form .checkbox {
@@ -40,6 +40,15 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.login-form .forgot-link {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: transparent;
+}
+.login-form a:hover {
+	margin-top: 10px;
+	background-color: transparent;
+}
 .NS-navbar {
 	background-color: #494;
 	box-shadow: 0px 3px 5px #000;
@@ -48,11 +57,11 @@ body {
 	background-color: #484;
 }
 a {
-  color: #000;
+  color: #333;
 }
 a:hover,
 a:focus {
-  color: #000;
+  color: #33;
   text-decoration: underline;
   background-color:#448844;
 }
