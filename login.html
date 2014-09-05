@@ -50,10 +50,10 @@
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
-      <form class="login-form">
+      <form method="POST" action="script/login.php" class="login-form">
         <h2 class="form-login-heading">Inicie Sesion</h2>
-        <input type="email" class="form-control" placeholder="Email address" required autofocus />
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="email" name="user_mail" class="form-control" placeholder="Email address" required autofocus />
+        <input type="password" name="pwd" class="form-control" placeholder="Password" required>
         <div class="controls-container">
 	        <div class="checkbox pull-left">
 	          <label>
