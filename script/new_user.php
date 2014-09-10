@@ -1,5 +1,6 @@
 <?php
     require 'passwordHash.php';
+    require 'validation.php';
     //This must be extracted safely from config file. This is just a mock
     $db_settings['dns'] = 'mysql:host=localhost;dbname=NS_users';
     $db_settings['db_user'] = 'root';
@@ -11,6 +12,12 @@
     $new_user_data['new_user_password'] = 'admin'; //$_POST['new_user_password'];
     $new_user_data['new_user_class'] = 'admin'; //$_POST['new_user_class'];
     
+    //This functions validate the inputs matching the value against RegExp and other logical rules
+    validate_input_email($new_user_data['new_user_email']);
+    validate_input_name($new_user_data['new_user_name']);
+    validate_input_password($new_user_data['new_user_password']);
+    validate_input_class($new_user_data['new_user_class']);
+    
     $correct_hash = explode(':', create_hash($new_user_data['new_user_password']));
     
     try {
@@ -21,16 +28,11 @@
     
     $sql_users = "INSERT INTO users (username, name, class) VALUES (\"" . $new_user_data['new_user_email'] . "\",\"" . $new_user_data['new_user_name'] . "\",\"" . $new_user_data['new_user_class'] . "\")";
     //echo $sql_users;
-    $affected_rows = $DB_Handle->exec($sql_users);
+    @$affected_rows = $DB_Handle->exec($sql_users);
     //I'll add a redirect to a nice error page eventually
-    function exception_handler($e)
-    {
-        echo 'Exception thrown: ' . $e->getMessage() . "\n";
-    }
 
-    set_exception_handler('exception_handler');
     if ($affected_rows === 0) {
-        throw new Exception("Error Processing Request", 1);
+        header('location: fail.html');
     } else {
         $uid = $DB_Handle->query("SELECT uid FROM users WHERE username=\"" . $new_user_data['new_user_email'] . "\"");
         $result = $uid->fetchObject();
