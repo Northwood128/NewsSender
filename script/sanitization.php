@@ -1,9 +1,8 @@
 <?php
-     function sanitize(String $string)
+     
+     function sanitize($string)
      {
          $string=implode("",explode("\\",$string));
          return strip_tags(stripslashes(trim($string)));
-
      }
-
 ?>

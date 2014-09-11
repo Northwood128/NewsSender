@@ -1,7 +1,8 @@
 <?php
+
     require 'sanitization.php';
     //validation Functions
-    function validate_input_email(String $email)
+    function validate_input_email($email)
     {
         if (!preg_match('/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/', $email)){
             throw new Exception("Email invalido", 001);
@@ -26,4 +27,22 @@
             throw new Exception("Clase Invalida", 004);
         }
     }
+   set_exception_handler('handle_exception');
+   function handle_exception(Exception $e)
+   {
+	if ($e->getCode() == 001) {
+   	   echo 'Exception Caught: ' . $e->getCode() .':'.$e->getMessage();
+	}
+	
+	if ($e->getCode() == 002){
+   	   echo 'Exception Caught: ' . $e->getCode() .': '.$e->getMessage();
+	}
+	if ($e->getCode() == 003){
+   	   echo 'Exception Caught: ' . $e->getCode() .': '. $e->getMessage();
+	}
+	if ($e->getCode() == 003){
+   	   echo 'Exception Caught: ' . $e->getCode() .': '.$e->getMessage();
+	}
+   }
+    validate_input_email('hola');
 ?>
