@@ -1,5 +1,5 @@
 <?php
-  
+  require 'validation.php';
   $user_data['email'] = $_POST['user_mail'];
   $user_data['pwd'] = $_POST['pwd'];
  //This is just a mockup for a real DB check 
