@@ -58,10 +58,15 @@ function create_hash($password)
 
 function validate_password($password, $correct_hash)
 {
-    $params = explode(":", $correct_hash);
+    /* This is part of the original implementation found at Cracktation. I'm just gonna pass the hash, not the whole string
+     * $params = explode(":", $correct_hash);
     if(count($params) < HASH_SECTIONS)
        return false; 
+     * 
+     * 
     $pbkdf2 = base64_decode($params[HASH_PBKDF2_INDEX]);
+     * */
+    $pbkdf2 = base64_decode($correct_hash);
     return slow_equals(
         $pbkdf2,
         pbkdf2(
