@@ -32,7 +32,7 @@
     //I'll add a redirect to a nice error page eventually
 
     if ($affected_rows === 0) {
-        header('location: fail.html');
+        header('location: ../html/fail.html');
     } else {
         $uid = $DB_Handle->query("SELECT uid FROM users WHERE username=\"" . $new_user_data['new_user_email'] . "\"");
         $result = $uid->fetchObject();

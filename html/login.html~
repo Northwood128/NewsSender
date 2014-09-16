@@ -80,7 +80,7 @@
 		// Below url with display query string if its present or not
 		var query = $.getUrlQueryString(window.location.href);
 		if (query.login == "false") {
-		   var element = $("#login-failed");
+		   var element = $("#login\\-failed");
 		   //element.html("Usuario y/o contraseña incorrecto.");
 		   alert(element.html);
 		}
