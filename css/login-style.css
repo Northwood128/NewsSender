@@ -65,9 +65,9 @@ a:focus {
   text-decoration: underline;
   background-color:#448844;
 }
-/*#login-failed{
+#login-failed{
 	display: none;
-}*/
+}
 .visible {
 	display: inline-block;
 }

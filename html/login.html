@@ -54,7 +54,7 @@
         <h2 class="form-login-heading">Inicie Sesion</h2>
         <input type="email" name="user_mail" class="form-control" placeholder="Email address" required autofocus />
         <input type="password" name="pwd" class="form-control" placeholder="Password" required>
-	<div id="login-failed">contraseña incorrecta</div>
+	<div id="login-failed">.</div>
         <div class="controls-container">
 	        <div class="checkbox pull-left">
 	          <label>
@@ -81,8 +81,8 @@
 		var query = $.getUrlQueryString(window.location.href);
 		if (query.login == "false") {
 		   var element = $("#login-failed");
-		   //element.html("Usuario y/o contraseña incorrecto.");
-		   alert(element.html);
+		   element.html("Usuario y/o contraseña incorrecto.");
+		   element.addClass("visible");
 		}
 	</script>
   </body>
