@@ -4,7 +4,7 @@ body {
   background-color: #eee;
 }
 .login-form {
-  background: #DDD;
+  background: #EEE;
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
@@ -67,7 +67,4 @@ a:focus {
 }
 #login-failed{
 	display: none;
-}
-.visible {
-	display: inline-block;
 }

@@ -28,7 +28,15 @@
    $hash_stmt->execute();
    $user_hash = $hash_stmt->fetch(PDO::FETCH_ASSOC);
    
-   if (validate_password($user_data['pwd'], $user_hash)){
+   $sql_user_hash = 'SELECT salt FROM salt WHERE uid = :uid';
+   $salt_stmt = $DB_Handle->prepare($sql_user_hash);
+   $salt_stmt->bindParam(':uid', $user_uid['uid']);
+   $salt_stmt->execute();
+   $user_salt = $hash_stmt->fetch(PDO::FETCH_ASSOC);
+   
+   $hash_pack = PBKDF2_HASH_ALGORITHM . ':' . PBKDF2_ITERATIONS . ':' . $user_salt['salt'] . ':' . $user_hash['hash'];
+   
+   if (validate_password($user_data['pwd'], $hash_pack)){
        header('Location: dashboard.php');
    }else{
        header('Location: ../html/login.html?login=false');

@@ -28,7 +28,7 @@
     
     $sql_users = "INSERT INTO users (username, name, class) VALUES (\"" . $new_user_data['new_user_email'] . "\",\"" . $new_user_data['new_user_name'] . "\",\"" . $new_user_data['new_user_class'] . "\")";
     //echo $sql_users;
-    @$affected_rows = $DB_Handle->exec($sql_users);
+    $affected_rows = $DB_Handle->exec($sql_users);
     //I'll add a redirect to a nice error page eventually
 
     if ($affected_rows === 0) {

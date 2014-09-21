@@ -16,8 +16,9 @@
     }
     function validate_input_password(String $pass)
     {
-        if (!preg_match('/^[a-z0-9_-]{6,18}$/', $pass)){
-            throw new Exception("El password debe tener una longitud de entre 6 a 18 caracteres y puede estar compuesto por caracteres de A-Z, a-z, 0 al 9 y -", 102);
+        if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(.{6,})$/', $pass)){
+            throw new Exception("El password debe tener una longitud minima de 6 caracteres
+                     y puede estar compuesto por caracteres de A-Z, a-z, 0 al 9 y simbolos(!\"#$%&/()=?¡)", 102);
         }
     }
     function validate_input_class(String $class)

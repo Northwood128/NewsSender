@@ -79,10 +79,12 @@
     <script>
 		// Below url with display query string if its present or not
 		var query = $.getUrlQueryString(window.location.href);
+		var element = $("#login-failed");
 		if (query.login == "false") {
-		   var element = $("#login-failed");
 		   element.html("Usuario y/o contraseña incorrecto.");
-		   element.addClass("visible");
+		   element.show();
+		}else{
+			element.hide();
 		}
 	</script>
   </body>
