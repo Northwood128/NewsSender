@@ -4,9 +4,9 @@
 
 $(document).ready(function() {
 	
-	$("#new-user-form").submit(function(e) {
+	$('#new-user-form').submit(function(event) {
+		event.preventDefault();
 		
-		e.preventDefault();
 		var new_user_data = $(this).serializeArray();
 		//This way, i can use the same funtion for many forms,just change the URL based on the ID of the modal div
 		if ($(".modal").attr('id') == 'agregarUsuario'){
@@ -30,10 +30,7 @@ $(document).ready(function() {
 			
 		})
 		.always(function(){
-			setTimeout(function() {
-				$(".fa").hide();
-			},1000);
+			$(".fa").hide();
 		});
 	});
-	
 });

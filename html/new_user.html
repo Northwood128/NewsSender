@@ -6,10 +6,9 @@
     <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
     Remove this if you use the .htaccess -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
+    <script src="../js/jquery.min.js"></script>
+	<script src="../js/main.js"></script>
     <title>Usuarios</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
 
@@ -34,10 +33,15 @@
     <div class="container">
     	
 	<!-- Button trigger modal -->
-	<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#agregarUsuario">
+	<!--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#agregarUsuario">
 	  Agregar Usuario
-	</button>
-
+	</button>-->
+	<ul class="nav nav-pills">
+  		<li class="active"><a href="#">Home</a></li>
+  		<li><a href="#" data-toggle="modal" data-target="#agregarUsuario">Nuevo Usuario</a></li>
+  		<li><a href="#" data-toggle="modal" data-target="#amazonSettings">Amazon</a></li>
+	</ul>
+	
 	<div class="modal fade" id="agregarUsuario">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -68,24 +72,44 @@
 					<span class="help-block">El tipo de usuario determina el nivel de permisos que tendrá ese usuario</span>
 					
 				</div>
+				<div class="modal-footer">
+			      	<span><i class="fa fa-spinner fa-spin"></i></span>
+			        <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+			        <!--<button type="submit" id="save" class="btn btn-primary">Guardar cambios</button>-->
+			        <input type="submit" class="btn btn-primary" value="Guardar cambios"/>
+		      	</div>
+			</form>
+			
+	      </div>
+
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+		<div class="modal fade" id="amazonSettings">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+	        <h4 class="modal-title">Configuracion de Amazon:</h4>
+	      </div>
+	      <div class="modal-body">
+	      	
+			<form id="new-user-form">
+				
 				
 			</form>
 			
 	      </div>
-	      <div class="modal-footer">
-	      	<i class="fa fa-refresh fa-spin"></i>
-	        <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	        <!--<button type="submit" id="save" class="btn btn-primary">Guardar cambios</button>-->
-	        <input type="submit" class="btn btn-primary" value="Guardar cambios"/>
-	      </div>
+
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	
     </div><!-- /container -->
     
-    <script src="../js/main.js"></script>
-    <script src="../js/jquery.min.js"></script>
+    
+    
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../bootstrap/js/ie10-viewport-bug-workaround.js"></script>
