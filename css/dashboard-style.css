@@ -9,7 +9,7 @@ a{
 	color: rgb(0,0,0);
 }
 .tile{
-	width: 300px;
+	width: 31%;
 	height: 175px;
 	border: 1px solid rgb(191,191,191);
 	-webkit-border-radius: 10px;
@@ -32,8 +32,11 @@ a{
 	border-radius: 10px;
 	float: right;
 	background-color: rgb(204,204,204);
-	width: 450px;
-	height: 350px;
+	width: 42%;
+	height: 525px;
 	padding: 10px;
 	margin-right: 10px;
+}
+.desc{
+	display: none;
 }

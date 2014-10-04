@@ -21,6 +21,7 @@
 		    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 		    <link href="../css/dashboard-style.css" rel="stylesheet" />
+		    <link type="text/css" href="../css/font-awesome-animation.min.css" rel="stylesheet" />
 		    
 		      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		      <!--[if lt IE 9]>
@@ -73,27 +74,33 @@
 	    </nav>
 		<div class="info-sidebar">
 			<h4><span class="fa fa-info-circle"></span> Descripción: </h4>
+			<span class ="desc" id="desc-campaign">Cree una campaña de correos que sera enviada a todos los suscriptos a su lista de clientes</span>
+			<span class ="desc" id="desc-mail">Envie correos electronicos de manera individual, utilizando su direccion de correo personal</span>
+			<span class ="desc" id="desc-config">Modifique la configuracion de la herramienta</span>
+			<span class ="desc" id="desc-profile">Personalice los detalles de su cuenta particular</span>
+			<span class ="desc" id="desc-stats">Estadisticas detalladas sobre las ultimas campañas realizadas</span>
+			<span class ="desc" id="desc-help">Ayuda y documentación de la herramienta</span>
 		</div>
 	    <div class="container">
 
 		  <div class="dashboard-tiles">
-			<button type="button" class="btn btn-default btn-lg tile">
-			  <span class="fa fa-home fa-4x"></span> <div>Inicio</div>
+			<button type="button" id="campaign" class="btn btn-default btn-lg tile faa-parent animated-hover">
+			  <span class="fa fa-user faa-pulse animated-hover fa-4x"></span> <div>Crear Campaña</div>
 			</button>
-			<button type="button" class="btn btn-default btn-lg tile">
-			  <span class="fa fa-users fa-4x"></span> <div>Crear Campaña</div>
-			</button>
-			<button type="button" class="btn btn-default btn-lg tile">
+			<button type="button" id="mail" class="btn btn-default btn-lg tile">
 			  <span class="fa fa-envelope fa-4x"></span> <div>Enviar Correo</div>
 			</button>
-			<button type="button" class="btn btn-default btn-lg tile">
+			<button type="button" id="config" class="btn btn-default btn-lg tile">
 			  <span class="fa fa-gear fa-4x"></span> <div>Configuración</div>
 			</button>
-			<button type="button" class="btn btn-default btn-lg tile">
+			<button type="button" id="profile" class="btn btn-default btn-lg tile">
 			  <span class="fa fa-user fa-4x"></span> <div>Perfil</div>
 			</button>
-			<button type="button" class="btn btn-default btn-lg tile">
+			<button type="button" id="stats" class="btn btn-default btn-lg tile">
 			  <span class="fa fa-line-chart fa-4x"></span> <div>Estadisticas</div>
+			</button>
+			<button type="button" id="help" class="btn btn-default btn-lg tile">
+			  <span class="fa fa-info-circle fa-4x"></span> <div>Ayuda</div>
 			</button>
 		  </div>
 

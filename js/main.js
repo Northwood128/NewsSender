@@ -33,4 +33,14 @@ $(document).ready(function() {
 			$(".fa").hide();
 		});
 	});
+	
+	$('.tile').hover(function(){
+		var $element = $(this);
+		
+		var $elementId = $element.prop('id');
+		//$element.children(':first').toggleClass('fa-spin');
+		var toFind = "span#desc-"+$elementId;
+		//console.log(toFind);
+		$(".info-sidebar").find(toFind).toggle();
+	});
 });
