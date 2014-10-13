@@ -7,8 +7,7 @@
     Remove this if you use the .htaccess -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <script src="../js/jquery.min.js"></script>
-	<script src="../js/main.js"></script>
-    <title>Usuarios</title>
+    <title>Configuracion</title>
 
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
 
@@ -19,7 +18,7 @@
     <!-- Link to Boostrap Core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/users-style.css" rel="stylesheet" />
+    <link href="../css/config-style.css" rel="stylesheet" />
     
       <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!--[if lt IE 9]>
@@ -37,11 +36,11 @@
 	  Agregar Usuario
 	</button>-->
 	<ul class="nav nav-pills">
-  		<li class="active"><a href="#">Home</a></li>
+  		<li class="active"><a href="dashboard.html">Home</a></li>
   		<li><a href="#" data-toggle="modal" data-target="#agregarUsuario">Nuevo Usuario</a></li>
   		<li><a href="#" data-toggle="modal" data-target="#amazonSettings">Amazon</a></li>
 	</ul>
-	
+	<!-- Modal para agregar nuevos usuarios -->
 	<div class="modal fade" id="agregarUsuario">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -51,7 +50,7 @@
 	      </div>
 	      <div class="modal-body">
 	      	
-			<form id="new-user-form">
+			<form id="new-user-form" action="../script/new_user.php" method="post">
 				
 				<input type="email" name="new_user_mail" class="form-control" placeholder="Correo electronico" required autofocus />
 				<input type="text" name="new_user_name" class="form-control" placeholder="Nombre" required autofocus />
@@ -73,9 +72,7 @@
 					
 				</div>
 				<div class="modal-footer">
-			      	<span><i class="fa fa-spinner fa-spin"></i></span>
 			        <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			        <!--<button type="submit" id="save" class="btn btn-primary">Guardar cambios</button>-->
 			        <input type="submit" class="btn btn-primary" value="Guardar cambios"/>
 		      	</div>
 			</form>
@@ -85,8 +82,9 @@
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
-	
-		<div class="modal fade" id="amazonSettings">
+
+		<!-- Modal para agregar configurar los parametros de AWS -->
+	<div class="modal fade" id="amazonSettings">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -95,7 +93,7 @@
 	      </div>
 	      <div class="modal-body">
 	      	
-			<form id="new-user-form">
+			<form id="amazonSettings-form">
 				
 				
 			</form>
