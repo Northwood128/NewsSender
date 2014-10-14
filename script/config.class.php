@@ -8,7 +8,7 @@
         
        public function ConfigLoader($user){
            
-           if ($user = 'amazon') {
+           if ($user == 'amazon') {
                try {
                    $file = $this->location."amazon".$this->userfile;
 				   $bool = file_exists($file);
@@ -20,7 +20,7 @@
                }
            }else{
                try{
-                   $file = "\"".$this->location.$user.$this->userfile."\"";
+                   $file = $this->location.$user.$this->userfile;
 				   $bool = file_exists($file);
                    if ($bool) {
                        $this->user_settings = parse_ini_file($file);
@@ -48,7 +48,7 @@
        }
     }
     
-    $obj = new ConfigLoader('amazon');
+    $obj = new ConfigLoader('agustin');
     $set = $obj->getUserSettings();
     print_r($set);
 ?>
