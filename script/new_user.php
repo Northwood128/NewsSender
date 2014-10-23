@@ -1,11 +1,11 @@
 <?php
     require 'passwordHash.php';
     require 'validation.php';
+	require 'Config.class.php';
     
-    //This must be extracted safely from config file. This is just a mock
-    $db_settings['dns'] = 'mysql:host=localhost;dbname=NS_users';
-    $db_settings['db_user'] = 'root';
-    $db_settings['db_pwd'] = '//*praga800dc*';
+	$loader = new ConfigLoader();
+	$settings = $loader->getDbSettings();
+	$dns = "mysql:host=" . $settings['db']['host'] . ";dbname=NS_users";
     
     //This data comes from config.html
     $new_user_data['new_user_mail'] = $_POST['new_user_mail'];
@@ -23,7 +23,7 @@
     $correct_hash = explode(':', create_hash($new_user_data['new_user_password']));
     
     try {
-        $DB_Handle = new PDO($db_settings['dns'],$db_settings['db_user'],$db_settings['db_pwd'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+        $DB_Handle = new PDO($dns,$$settings['db']['user'],$$settings['db']['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
     } catch (PDOException $e) {
         echo 'Error: ' , $e->getMessage(), '\n';
     }

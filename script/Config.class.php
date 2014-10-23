@@ -2,25 +2,26 @@
     
     class ConfigLoader{
        private $location = '../config/';
-       private $userfile = '_config.ini';
-       public $user_settings;
-       public $amazon_settings;
+       private $settings_file = '_config.ini';
+       private $user_settings;
+       private $amazon_settings;
+	   private $app_settings;
         
-       public function ConfigLoader($user){
+       public function ConfigLoader($user=NULL){
            
            if ($user == 'amazon') {
                try {
-                   $file = $this->location."amazon".$this->userfile;
+                   $file = $this->location."amazon".$this->file;
 				   $bool = file_exists($file);
                    if ($bool) {
-                       $this->amazon_settings = parse_ini_file($file);
+                       $this->amazon_settings = parse_ini_file($file, true);
                    }
                }catch(Exception $e){
                    echo $e->getMessage();
                }
            }else{
                try{
-                   $file = $this->location.$user.$this->userfile;
+                   $file = $this->location.$user.$this->settings_file;
 				   $bool = file_exists($file);
                    if ($bool) {
                        $this->user_settings = parse_ini_file($file);
@@ -46,9 +47,10 @@
                 return $this->amazon_settings;
             }
        }
-    }
-    
-    $obj = new ConfigLoader('agustin');
-    $set = $obj->getUserSettings();
-    print_r($set);
+	   
+	   public function getDbSettings(){
+	   		$this->app_settings = parse_ini_file("$this->location" . "app_config.ini",true);
+			return $this->app_settings;
+	   }
+}
 ?>
