@@ -11,7 +11,6 @@
     $new_user_data['new_user_mail'] = $_POST['new_user_mail'];
     $new_user_data['new_user_name'] = $_POST['new_user_name'];
     $new_user_data['new_user_password'] = $_POST['new_user_password'];
-    echo $new_user_data['new_user_password']."<br>";
     $new_user_data['new_user_class'] = $_POST['new_user_class'];
     
     //This functions validate the inputs matching the value against RegExp and other logical rules
@@ -23,7 +22,7 @@
     $correct_hash = explode(':', create_hash($new_user_data['new_user_password']));
     
     try {
-        $DB_Handle = new PDO($dns,$$settings['db']['user'],$$settings['db']['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+        $DB_Handle = new PDO($dns,$settings['db']['user'], $settings['db']['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
     } catch (PDOException $e) {
         echo 'Error: ' , $e->getMessage(), '\n';
     }

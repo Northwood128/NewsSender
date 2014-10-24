@@ -1,6 +1,27 @@
+.navbar{
+	background-color: rgba(0,150,200,1);
+}
+a{
+	color: rgb(0,0,0);
+}
 .class {
 	margin: 10px 0 10px 0;
 }
 .modal-dialog {
 	margin-top: 60px;
+}
+.container {
+	margin-top: 60px;
+}
+.tile{
+	width: 31%;
+	height: 175px;
+	border: 1px solid rgb(191,191,191);
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	float: left;
+}
+.config-tiles span {
+	color: rgba(0,150,200,1);
 }
