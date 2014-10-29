@@ -1,8 +1,18 @@
+body {
+  padding-top: 10px;
+  font-family: 'Open Sans', sans-serif;
+}
 .navbar{
 	background-color: rgba(0,150,200,1);
 }
+.navbar-container{
+	margin-top: 10px;
+}
 a{
 	color: rgb(0,0,0);
+}
+.search-input{
+	margin-right: 25px;
 }
 .class {
 	margin: 10px 0 10px 0;
@@ -24,4 +34,7 @@ a{
 }
 .config-tiles span {
 	color: rgba(0,150,200,1);
+}
+#rds-inputs{
+	margin-top: 10px;
 }

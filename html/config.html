@@ -41,7 +41,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="#"><img src="crow_flying2.png" width="150" height="100"></a>
+	          <a class="navbar-brand" href="dashboard.html"><img src="crow_flying2.png" width="150" height="100"></a>
 	        </div>
 	        <div class="navbar-collapse collapse">
 	          <div class="navbar-container">
@@ -79,19 +79,19 @@
 			<button type="button" id="users" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#agregarUsuario">
 			  <span class="fa fa-user faa-pulse fa-4x"></span> <div>Administrar usuarios</div>
 			</button>
-			<button type="button" id="mail" class="btn btn-default btn-lg tile faa-parent animated-hover">
+			<button type="button" id="mail" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#amazonSettings">
 			  <span class="fa icon-amazon-sign faa-tada fa-4x"></span> <div>Configuracion de Amazon</div>
 			</button>
-			<button type="button" id="config" class="btn btn-default btn-lg tile faa-parent animated-hover">
+			<button type="button" id="config" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#agregarUsuario">
 			  <span class="fa fa-gear faa-spin fa-4x"> </span> <div><a href="config.html">Configuración</a></div>
 			</button>
-			<button type="button" id="profile" class="btn btn-default btn-lg tile faa-parent animated-hover">
+			<button type="button" id="profile" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#agregarUsuario">
 			  <span class="fa fa-user faa-pulse fa-4x"></span> <div>Perfil</div>
 			</button>
-			<button type="button" id="stats" class="btn btn-default btn-lg tile faa-parent animated-hover">
+			<button type="button" id="stats" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#agregarUsuario">
 			  <span class="fa fa-line-chart faa-bounce fa-4x"></span> <div>Estadisticas</div>
 			</button>
-			<button type="button" id="help" class="btn btn-default btn-lg tile faa-parent animated-hover">
+			<button type="button" id="help" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#agregarUsuario">
 			  <span class="fa fa-info-circle faa-flash  fa-4x"></span> <div>Ayuda</div>
 			</button>
 		  </div>
@@ -118,7 +118,6 @@
 					 
 				<input type="password" name="check-pwd" class="form-control" placeholder="Confirme Password" required>
 				
-				<div class="controls-container">
 					
 					<label for="user-select">Tipo de Usuario</label>
 					<select class="form-control" id="class" name="new_user_class">
@@ -127,7 +126,6 @@
 					</select>
 					<span class="help-block">El tipo de usuario determina el nivel de permisos que tendrá ese usuario</span>
 					
-				</div>
 				<div class="modal-footer">
 			        <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 			        <input type="submit" class="btn btn-primary" value="Guardar cambios"/>
@@ -149,23 +147,55 @@
 	        <h4 class="modal-title">Configuracion de Amazon:</h4>
 	      </div>
 	      <div class="modal-body">
-	      	
-			<form id="amazonSettings-form">
-				
-				
-			</form>
-			
+	      	<ul class="nav nav-pills nav-justified" role="tablist" id="tabbes">
+			  <li class="active"><a href="#rds" data-toggle="tab">Amazon RDS</a></li>
+			  <li><a href="#ses" data-toggle="tab">Amazon SES</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="rds">
+					<form id="rds-form" action="../script/new_user.php" method="post">
+						<div class="form-group" id="rds-inputs">
+							<label for="endpoint">Endpoint: (sin :3306)</label>
+							<input type="text" class="form-control" placeholder="Endpoint" id="endpoint">
+							
+							<label for="rds-username">Username:</label>
+							<input type="text" class="form-control" placeholder="Username" id="endpoint">  
+							
+							<label for="rds-password">Password: </label>
+							<input type="password" class="form-control" placeholder="Password" id="endpoint">  
+						</div>
+						<div class="modal-footer">
+							<!-- El boton test debe hacrer una llamada con Ajax a un script que instancia un objeto PDO
+								con los datos del formulario y si la conexion es correcta, le agrega al boton la clase .green. 
+								si la conexion falla, agrega la clase .red
+								 -->
+							<button type="button" id="test" class="btn btn-default" data-dismiss="modal">Probar!</button>
+							<button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					        <input type="submit" class="btn btn-primary" value="Guardar cambios"/>
+						</div>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="ses">
+				  
+				</div>				  			
+			</div>
 	      </div>
 
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+	</div><!-- /Amazon.modal -->
 	
     </div><!-- /container -->
     
     
     
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script>
+    $('#tabbes a').click(function(e) {
+  		e.preventDefault();
+  		$(this).tab('show');
+	});
+    </script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../bootstrap/js/ie10-viewport-bug-workaround.js"></script>
   </body>
