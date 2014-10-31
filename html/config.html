@@ -76,7 +76,7 @@
     <div class="container">
 
 		<div class="config-tiles">
-			<button type="button" id="users" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#agregarUsuario">
+			<button type="button" id="users" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#adminUsuario">
 			  <span class="fa fa-user faa-pulse fa-4x"></span> <div>Administrar usuarios</div>
 			</button>
 			<button type="button" id="mail" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#amazonSettings">
@@ -96,7 +96,7 @@
 			</button>
 		  </div>
 	<!-- Modal para agregar nuevos usuarios -->
-	<div class="modal fade" id="agregarUsuario">
+	<div class="modal fade" id="adminUsuario">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	    	
@@ -106,39 +106,71 @@
 	      </div>
 	      
 	      <div class="modal-body">
-	      	
-			<form id="new-user-form" action="../script/new_user.php" method="post">
-				
-				<input type="email" name="new_user_mail" class="form-control" placeholder="Correo electronico" required autofocus />
-				<input type="text" name="new_user_name" class="form-control" placeholder="Nombre" required autofocus />
-				<input type="password" name="new_user_password" class="form-control" placeholder="Password" required>
-				
-				<span class="help-block">El password debe tener una longitud minima de 6 caracteres
-					 y <strong>debe</strong> estar compuesto por caracteres de A-Z, a-z, 0 al 9 y opcionalmente simbolos(!"#$%&/()=?¡)</span>
-					 
-				<input type="password" name="check-pwd" class="form-control" placeholder="Confirme Password" required>
-				
-					
-					<label for="user-select">Tipo de Usuario</label>
-					<select class="form-control" id="class" name="new_user_class">
-					  <option value="user" selected="selected">Usuario</option>
-					  <option value="admin">Administrador</option>					  
-					</select>
-					<span class="help-block">El tipo de usuario determina el nivel de permisos que tendrá ese usuario</span>
-					
-				<div class="modal-footer">
-			        <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			        <input type="submit" class="btn btn-primary" value="Guardar cambios"/>
-		      	</div>
-			</form>
-			
+	      	<ul class="nav nav-pills nav-justified" role="tablist" id="usertabs">
+			  <li class="active"><a href="#add" data-toggle="tab">Agregar usuarios</a></li>
+			  <li><a href="#del" data-toggle="tab">Borrar usuario</a></li>
+			  <li><a href="#mod" data-toggle="tab">Modificar usuario</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="add">
+					<form id="new-user-form" action="../script/new_user.php" method="post">
+						
+						<input type="email" name="new_user_mail" class="form-control" placeholder="Correo electronico" required autofocus />
+						<input type="text" name="new_user_name" class="form-control" placeholder="Nombre" required autofocus />
+						<input type="password" name="new_user_password" class="form-control" placeholder="Password" required>
+						
+						<span class="help-block">El password debe tener una longitud minima de 6 caracteres
+							 y <strong>debe</strong> estar compuesto por caracteres de A-Z, a-z, 0 al 9 y opcionalmente simbolos(!"#$%&/()=?¡)</span>
+							 
+						<input type="password" name="check-pwd" class="form-control" placeholder="Confirme Password" required>
+						
+							
+							<label for="user_select">Tipo de Usuario</label>
+							<select class="form-control" id="user_select" name="new_user_class">
+							  <option value="user" selected="selected">Usuario</option>
+							  <option value="admin">Administrador</option>					  
+							</select>
+							<span class="help-block">El tipo de usuario determina el nivel de permisos que tendrá ese usuario</span>
+							
+						<div class="modal-footer">
+					        <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					        <input type="submit" class="btn btn-primary" value="Guardar cambios"/>
+				      	</div>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="del">
+					<form id="del-user-form" action="../script/del_user.php" method="post">
+						<label for="delinput">Usuario</label>
+						<input type="text" name="new_user_name" class="form-control" placeholder="Usuario" id="delinput" required autofocus />
+						
+						<p class="bg-danger">Tenga en cuenta que esta accion es permanente</p>
+							
+						<div class="modal-footer">
+					        <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					        <input type="submit" class="btn btn-primary" value="Borrar"/>
+				      	</div>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="mod">
+					<form id="del-user-form" action="../script/mod_user.php" method="post">
+						<label for="modinput">Usuario</label>
+						
+						
+							
+						<div class="modal-footer">
+					        <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					        <input type="submit" class="btn btn-primary" value="Borrar"/>
+				      	</div>
+					</form>
+				</div>
+			</div>
 	      </div>
 
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 
-		<!-- Modal para agregar configurar los parametros de AWS -->
+		<!-- Modal para configurar los parametros de AWS -->
 	<div class="modal fade" id="amazonSettings">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -147,7 +179,7 @@
 	        <h4 class="modal-title">Configuracion de Amazon:</h4>
 	      </div>
 	      <div class="modal-body">
-	      	<ul class="nav nav-pills nav-justified" role="tablist" id="tabbes">
+	      	<ul class="nav nav-pills nav-justified" role="tablist" id="amazontabs">
 			  <li class="active"><a href="#rds" data-toggle="tab">Amazon RDS</a></li>
 			  <li><a href="#ses" data-toggle="tab">Amazon SES</a></li>
 			</ul>
@@ -176,7 +208,22 @@
 					</form>
 				</div>
 				<div class="tab-pane fade" id="ses">
-				  
+					<p class="bg-danger">Utiliza esta opcion si NewsSender corre fuera de una instancia EC2.<br />
+						Te recomendamos que leas este articulo. <a href="http://docs.aws.amazon.com/aws-sdk-php/guide/latest/credentials.html#instance-profile-credentials" alt="Configuracion del cliente de AWS SDK">Configuracion del cliente de AWS SDK</a>
+					</p>
+				  	<form id="rds-form" action="../script/new_user.php" method="post">
+						<div class="form-group" id="rds-inputs">
+							<label for="endpoint">AWS Access Key</label>
+							<input type="text" class="form-control" placeholder="AWS Access Key" id="endpoint">
+							
+							<label for="rds-username">AWS Secret Key</label>
+							<input type="password" class="form-control" placeholder="AWS Secret Key" id="endpoint">
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					        <input type="submit" class="btn btn-primary" value="Guardar cambios"/>
+						</div>
+					</form>
 				</div>				  			
 			</div>
 	      </div>
