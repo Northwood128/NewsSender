@@ -38,3 +38,7 @@ a{
 #rds-inputs{
 	margin-top: 10px;
 }
+#rds-inputs label{
+	margin-top: 5px;
+	
+}

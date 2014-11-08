@@ -8,6 +8,7 @@
 		    Remove this if you use the .htaccess -->
 		    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		    <script src="../js/jquery.min.js"></script>
+		    <script type="text/javascript" charset="utf-8" src="tester/tester.js"></script>
 		    <title>Configuracion</title>
 		
 		    <meta name="viewport" content="width=device-width; initial-scale=1.0">
@@ -187,14 +188,14 @@
 				<div class="tab-pane fade in active" id="rds">
 					<form id="rds-form" action="../script/new_user.php" method="post">
 						<div class="form-group" id="rds-inputs">
-							<label for="endpoint">Endpoint: (sin :3306)</label>
-							<input type="text" class="form-control" placeholder="Endpoint" id="endpoint">
+							<label for="rds-endpoint">Endpoint: (sin :3306)</label>
+							<input type="text" class="form-control" placeholder="Endpoint" id="rds-endpoint">
 							
 							<label for="rds-username">Username:</label>
-							<input type="text" class="form-control" placeholder="Username" id="endpoint">  
+							<input type="text" class="form-control" placeholder="Username" id="rds-username">  
 							
 							<label for="rds-password">Password: </label>
-							<input type="password" class="form-control" placeholder="Password" id="endpoint">  
+							<input type="password" class="form-control" placeholder="Password" id="rds-password">  
 						</div>
 						<div class="modal-footer">
 							<!-- El boton test debe hacrer una llamada con Ajax a un script que instancia un objeto PDO
