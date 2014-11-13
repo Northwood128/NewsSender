@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$('#cform').submit(function(e){
+	$('#rds-form').submit(function(e){
 		e.preventDefault();
 		//var toSend = $('#cform').serializeArray();
 		$.ajax({
@@ -13,11 +13,11 @@ $(document).ready(function(){
 			}
 		})
 		.done(function(response){
-			$('#sub').html(response.status)
+			console.log(response.status)
 		})
 		.fail(function(jqXHr, textStatus, errorThrown){
-			console.log(jqXHr.responseText);
+			console.log(jqXHr.responseText)
 		})
 	})
 
-})
+});
