@@ -1,16 +1,13 @@
 $(document).ready(function(){
 
-	$('#rds-form').submit(function(e){
-		e.preventDefault();
+	$('#test').click(function(e){
+		var submitData = $('#rds-form').serializeArray();
 		//var toSend = $('#cform').serializeArray();
 		$.ajax({
 			type: "POST",
 			url: "tester.php",
-			data: {endpoint: 'newsmailer.c2vdjjqd4rxl.us-west-2.rds.amazonaws.com',user: 'mailer', password:'Mailer2014'},
-			dataType: "json",
-			error: function(jqXHr, textStatus, errorThrown){
-				console.log(errorThrown);
-			}
+			data: {endpoint: submitData.rds-endpoint,user: submitData.rds-user, password: submitData.rds-password},
+			dataType: "json"
 		})
 		.done(function(response){
 			console.log(response.status)
@@ -18,6 +15,6 @@ $(document).ready(function(){
 		.fail(function(jqXHr, textStatus, errorThrown){
 			console.log(jqXHr.responseText)
 		})
-	})
+	});
 
 });

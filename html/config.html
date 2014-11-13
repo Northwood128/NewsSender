@@ -189,13 +189,13 @@
 					<form id="rds-form" action="../script/new_user.php" method="post">
 						<div class="form-group" id="rds-inputs">
 							<label for="rds-endpoint">Endpoint: (sin :3306)</label>
-							<input type="text" class="form-control" placeholder="Endpoint" id="rds-endpoint">
+							<input type="text" class="form-control" placeholder="Endpoint" name="rds-endpoint" id="rds-endpoint">
 							
 							<label for="rds-username">Username:</label>
-							<input type="text" class="form-control" placeholder="Username" id="rds-username">  
+							<input type="text" class="form-control" placeholder="Username" name=?"rds-username" id="rds-username">  
 							
 							<label for="rds-password">Password: </label>
-							<input type="password" class="form-control" placeholder="Password" id="rds-password">  
+							<input type="password" class="form-control" placeholder="Password" name="rds-password" id="rds-password">  
 						</div>
 						<div class="modal-footer">
 							<!-- El boton test debe hacrer una llamada con Ajax a un script que instancia un objeto PDO
