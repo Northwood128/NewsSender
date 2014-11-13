@@ -6,7 +6,7 @@ $(document).ready(function(){
 		$.ajax({
 			type: "POST",
 			url: "tester.php",
-			data: {endpoint: submitData.rds-endpoint,user: submitData.rds-username, password: submitData.rds-password},
+			data: {endpoint: submitData.rdsendpoint, user: submitData.rdsusername, password: submitData.rdspassword},
 			dataType: "json"
 		})
 		.done(function(response){
