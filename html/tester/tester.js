@@ -5,7 +5,7 @@ $(document).ready(function(){
 		//var toSend = $('#cform').serializeArray();
 		$.ajax({
 			type: "POST",
-			url: "tester.php",
+			url: "tester/tester.php",
 			data: {endpoint: submitData.rdsendpoint, user: submitData.rdsusername, password: submitData.rdspassword},
 			dataType: "json"
 		})
