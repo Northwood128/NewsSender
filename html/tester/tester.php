@@ -5,9 +5,9 @@
 	$user = $_GET['user'];
 	$password = $_GET['password'];
 	*/
-	$endpoint = $_POST['endpoint'];
-	$user = $_POST['user'];
-	$password = $_POST['password'];
+	$endpoint = $_POST['rdsendpoint'];
+	$user = $_POST['rdsusername'];
+	$password = $_POST['rdspassword'];
 	
 	$dsn = 'mysql:host='.$endpoint.';db=users';
 
