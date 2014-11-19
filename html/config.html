@@ -186,23 +186,24 @@
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane fade in active" id="rds">
-					<form id="rds-form" action="../script/new_user.php" method="post">
+					<form id="rdsform" action="../script/save_config.php" method="post">
 						<div class="form-group" id="rds-inputs">
 							<label for="rdsendpoint">Endpoint: (sin :3306)</label>
 							<input type="text" class="form-control" placeholder="Endpoint" name="rdsendpoint" id="rdsendpoint">
 							
 							<label for="rdsusername">Username:</label>
-							<input type="text" class="form-control" placeholder="Username" name=?"rdsusername" id="rdsusername">  
+							<input type="text" class="form-control" placeholder="Username" name="rdsusername" id="rdsusername">  
 							
 							<label for="rdspassword">Password: </label>
 							<input type="password" class="form-control" placeholder="Password" name="rdspassword" id="rdspassword">  
 						</div>
+						<input type="hidden" name="formid" value="rds">
 						<div class="modal-footer">
 							<!-- El boton test debe hacrer una llamada con Ajax a un script que instancia un objeto PDO
 								con los datos del formulario y si la conexion es correcta, le agrega al boton la clase .green. 
 								si la conexion falla, agrega la clase .red
 								 -->
-							<button type="button" id="test" class="btn btn-default" data-dismiss="modal">Probar!</button>
+							<button type="button" id="test" class="btn btn-default">Probar!</button>
 							<button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 					        <input type="submit" class="btn btn-primary" value="Guardar cambios"/>
 						</div>
@@ -212,7 +213,7 @@
 					<p class="bg-danger">Utiliza esta opcion si NewsSender corre fuera de una instancia EC2.<br />
 						Te recomendamos que leas este articulo. <a href="http://docs.aws.amazon.com/aws-sdk-php/guide/latest/credentials.html#instance-profile-credentials" alt="Configuracion del cliente de AWS SDK">Configuracion del cliente de AWS SDK</a>
 					</p>
-				  	<form id="rds-form" action="../script/new_user.php" method="post">
+				  	<form id="rds-form" action="../script/save_config.php" method="post">
 						<div class="form-group" id="rds-inputs">
 							<label for="endpoint">AWS Access Key</label>
 							<input type="text" class="form-control" placeholder="AWS Access Key" id="endpoint">
@@ -220,6 +221,7 @@
 							<label for="rds-username">AWS Secret Key</label>
 							<input type="password" class="form-control" placeholder="AWS Secret Key" id="endpoint">
 						</div>
+						<input type="hidden" name="formid" value="ses">
 						<div class="modal-footer">
 							<button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 					        <input type="submit" class="btn btn-primary" value="Guardar cambios"/>

@@ -44,5 +44,4 @@
    	   echo 'Exception Caught: ' . $e->getCode() .': '.$e->getMessage();
 	}
    }
-    //validate_input_email('agus@hotmail.com');
 ?>

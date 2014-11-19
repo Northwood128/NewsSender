@@ -24,7 +24,7 @@
     try {
         $DB_Handle = new PDO($dns,$settings['db']['user'], $settings['db']['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
     } catch (PDOException $e) {
-        echo 'Error: ' , $e->getMessage(), '\n';
+        echo 'Error: ' , $e->getMessage(), '\n';//*******************This needs to be changed
     }
     
     $sql_users = "INSERT INTO users (username, name, class) VALUES (\"" . $new_user_data['new_user_mail'] . "\",\"" . $new_user_data['new_user_name'] . "\",\"" . $new_user_data['new_user_class'] . "\")";
@@ -33,7 +33,7 @@
     //I'll add a redirect to a nice error page eventually
 
     if ($affected_rows === 0) {
-        header('location: ../html/fail.html');
+        header('location: fail.php');
     } else {
         $uid = $DB_Handle->query("SELECT uid FROM users WHERE username=\"" . $new_user_data['new_user_mail'] . "\"");
         $result = $uid->fetchObject();
