@@ -1,12 +1,9 @@
 <?php
 	//http://stackoverflow.com/questions/17316873/php-array-to-a-ini-file
-	function arr2ini(array $a, array $parent = array())
-	{
+	function arr2ini(array $a, array $parent = array()){
     	$out = '';
-		foreach ($a as $k => $v)
-		{
-    		if (is_array($v))
-    		{
+		foreach ($a as $k => $v){
+    		if (is_array($v)){
 	        	//subsection case
 				//merge all the sections into one array...
 				$sec = array_merge((array) $parent, (array) $k);
@@ -14,9 +11,7 @@
 				$out .= '[' . join('.', $sec) . ']' . PHP_EOL;
 				//recursively traverse deeper
 	    		$out .= arr2ini($v, $sec);
-			}
-			else
-			{
+			} else {
     			//plain key->value case
 				$out .= "$k=$v" . PHP_EOL;
         	}
@@ -34,15 +29,10 @@
 		$ini_file_content = parse_ini_file($ini_file,true);
 		
 	    if ($form['formid'] == 'rds'){
-	    	$ini_endpoint = $form['rdsendpoint'];
-			$ini_username = $form['rdsusername'];
-			$ini_password = $form['rdspassword'];
 			
-			$ini_file_content['RDS']['endpoint'] = $ini_endpoint;
-			$ini_file_content['RDS']['username'] = $ini_username;
-			$ini_file_content['RDS']['password'] = $ini_password;
-			$ini_file_content['SES']['endpoint'] = $ini_file_content['SES']['endpoint'];
-			$ini_file_content['SES']['port'] = $ini_file_content['SES']['port'];
+			$ini_file_content['RDS']['endpoint'] = $form['rdsendpoint'];
+			$ini_file_content['RDS']['username'] = $form['rdsusername'];
+			$ini_file_content['RDS']['password'] = $form['rdspassword'];
 			
 			//For the moment, we rewrite the file everytime a config change is made
 			$ini_fh = fopen($ini_file, 'w');
@@ -50,9 +40,27 @@
 			$result = fwrite($ini_fh, $ser_ini_file_content);
 			fclose($ini_fh);
 			
-			if ($result ==0 ) {
+			if (!$result) {
 				header('Location: fail.php');
 			}
+			
+	    }
+		
+		if ($form['formid'] == 'ses'){
+			
+			$ini_file_content['SES']['awsak'] = $form['awsak'];
+			$ini_file_content['SES']['awssk'] = $form['awssk'];
+			
+			//For the moment, we rewrite the file everytime a config change is made
+			$ini_fh = fopen($ini_file, 'w');
+			$ser_ini_file_content = arr2ini($ini_file_content);
+			$result = fwrite($ini_fh, $ser_ini_file_content);
+			fclose($ini_fh);
+			
+			if (!$result) {
+				header('Location: fail.php');
+			}
+			
 	    }
 	}
 ?>

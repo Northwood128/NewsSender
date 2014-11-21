@@ -80,20 +80,11 @@
 			<button type="button" id="users" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#adminUsuario">
 			  <span class="fa fa-user faa-pulse fa-4x"></span> <div>Administrar usuarios</div>
 			</button>
-			<button type="button" id="mail" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#amazonSettings">
+			<button type="button" id="amazon" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#amazonSettings">
 			  <span class="fa icon-amazon-sign faa-tada fa-4x"></span> <div>Configuracion de Amazon</div>
 			</button>
-			<button type="button" id="config" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#agregarUsuario">
-			  <span class="fa fa-gear faa-spin fa-4x"> </span> <div><a href="config.html">Configuración</a></div>
-			</button>
-			<button type="button" id="profile" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#agregarUsuario">
-			  <span class="fa fa-user faa-pulse fa-4x"></span> <div>Perfil</div>
-			</button>
-			<button type="button" id="stats" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#agregarUsuario">
-			  <span class="fa fa-line-chart faa-bounce fa-4x"></span> <div>Estadisticas</div>
-			</button>
-			<button type="button" id="help" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#agregarUsuario">
-			  <span class="fa fa-info-circle faa-flash  fa-4x"></span> <div>Ayuda</div>
+			<button type="button" id="appconfig" class="btn btn-default btn-lg tile faa-parent animated-hover" data-toggle="modal" data-target="#appConfig">
+			  <span class="fa fa-gear faa-spin fa-4x"> </span> <div><a href="config.html">Configuración de la aplicacion</a></div>
 			</button>
 		  </div>
 	<!-- Modal para agregar nuevos usuarios -->
@@ -211,15 +202,15 @@
 				</div>
 				<div class="tab-pane fade" id="ses">
 					<p class="bg-danger">Utiliza esta opcion si NewsSender corre fuera de una instancia EC2.<br />
-						Te recomendamos que leas este articulo. <a href="http://docs.aws.amazon.com/aws-sdk-php/guide/latest/credentials.html#instance-profile-credentials" alt="Configuracion del cliente de AWS SDK">Configuracion del cliente de AWS SDK</a>
+						Te recomendamos que leas este articulo. <a href="http://docs.aws.amazon.com/aws-sdk-php/guide/latest/credentials.html#instance-profile-credentials" target="_blank" alt="Configuracion del cliente de AWS SDK">Configuracion del cliente de AWS SDK</a>
 					</p>
-				  	<form id="rds-form" action="../script/save_config.php" method="post">
+				  	<form id="sesform" action="../script/save_config.php" method="post">
 						<div class="form-group" id="rds-inputs">
-							<label for="endpoint">AWS Access Key</label>
-							<input type="text" class="form-control" placeholder="AWS Access Key" id="endpoint">
+							<label for="awsak">AWS Access Key</label>
+							<input type="text" class="form-control" placeholder="AWS Access Key" name="awsak" id="awsak">
 							
-							<label for="rds-username">AWS Secret Key</label>
-							<input type="password" class="form-control" placeholder="AWS Secret Key" id="endpoint">
+							<label for="awssk">AWS Secret Key</label>
+							<input type="password" class="form-control" placeholder="AWS Secret Key" name="awssk" id="awssk">
 						</div>
 						<input type="hidden" name="formid" value="ses">
 						<div class="modal-footer">
@@ -235,6 +226,79 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /Amazon.modal -->
 	
+	<div class="modal fade" id="appConfig">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	    	
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+	        <h4 class="modal-title">Agregar usuario:</h4>
+	      </div>
+	      
+	      <div class="modal-body">
+	      	<ul class="nav nav-pills nav-justified" role="tablist" id="usertabs">
+			  <li class="active"><a href="#add" data-toggle="tab">Agregar usuarios</a></li>
+			  <li><a href="#del" data-toggle="tab">Borrar usuario</a></li>
+			  <li><a href="#mod" data-toggle="tab">Modificar usuario</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="add">
+					<form id="new-user-form" action="../script/new_user.php" method="post">
+						
+						<input type="email" name="new_user_mail" class="form-control" placeholder="Correo electronico" required autofocus />
+						<input type="text" name="new_user_name" class="form-control" placeholder="Nombre" required autofocus />
+						<input type="password" name="new_user_password" class="form-control" placeholder="Password" required>
+						
+						<span class="help-block">El password debe tener una longitud minima de 6 caracteres
+							 y <strong>debe</strong> estar compuesto por caracteres de A-Z, a-z, 0 al 9 y opcionalmente simbolos(!"#$%&/()=?¡)</span>
+							 
+						<input type="password" name="check-pwd" class="form-control" placeholder="Confirme Password" required>
+						
+							
+							<label for="user_select">Tipo de Usuario</label>
+							<select class="form-control" id="user_select" name="new_user_class">
+							  <option value="user" selected="selected">Usuario</option>
+							  <option value="admin">Administrador</option>					  
+							</select>
+							<span class="help-block">El tipo de usuario determina el nivel de permisos que tendrá ese usuario</span>
+							
+						<div class="modal-footer">
+					        <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					        <input type="submit" class="btn btn-primary" value="Guardar cambios"/>
+				      	</div>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="del">
+					<form id="del-user-form" action="../script/del_user.php" method="post">
+						<label for="delinput">Usuario</label>
+						<input type="text" name="new_user_name" class="form-control" placeholder="Usuario" id="delinput" required autofocus />
+						
+						<p class="bg-danger">Tenga en cuenta que esta accion es permanente</p>
+							
+						<div class="modal-footer">
+					        <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					        <input type="submit" class="btn btn-primary" value="Borrar"/>
+				      	</div>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="mod">
+					<form id="del-user-form" action="../script/mod_user.php" method="post">
+						<label for="modinput">Usuario</label>
+						
+						
+							
+						<div class="modal-footer">
+					        <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					        <input type="submit" class="btn btn-primary" value="Borrar"/>
+				      	</div>
+					</form>
+				</div>
+			</div>
+	      </div>
+
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
     </div><!-- /container -->
     
     

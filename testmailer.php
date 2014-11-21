@@ -40,5 +40,5 @@
 			),
 		));
 	echo $result;
-	//echo 'hola';
+
 ?>

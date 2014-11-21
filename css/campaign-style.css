@@ -1,0 +1,28 @@
+body {
+  padding-top: 70px;
+  font-family: 'Open Sans', sans-serif;
+}
+.navbar{
+	background-color: rgba(0,150,200,1);
+}
+a{
+	color: rgb(0,0,0);
+}
+.search-input{
+	margin-right: 25px;
+}
+.navbar-container{
+	margin-top: 10px;
+}
+#mailInputs{
+	float: left;
+	margin-right: 25px;
+}
+#additionalInputs{
+	float: left;
+}
+#test{
+	height: 50px;
+	min-height:50px;
+	resize:vertical;
+}
