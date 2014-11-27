@@ -1,6 +1,6 @@
 <?php
 
-    require 'sanitization.php';
+    //require 'sanitization.php';
     //validation Functions
     function validate_input_email($email)
     {

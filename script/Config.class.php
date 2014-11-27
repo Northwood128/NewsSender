@@ -11,7 +11,7 @@
            
            if ($user == 'amazon') {
                try {
-                   $file = $this->location."amazon".$this->file;
+                   $file = $this->location."amazon".$this->settings_file;
 				   $bool = file_exists($file);
                    if ($bool) {
                        $this->amazon_settings = parse_ini_file($file, true);
@@ -49,7 +49,7 @@
        }
 	   
 	   public function getDbSettings(){
-	   		$this->app_settings = parse_ini_file("$this->location" . "app_config.ini",true);
+	   		$this->app_settings = parse_ini_file("$this->location" . "amazon_config.ini",true);
 			return $this->app_settings;
 	   }
 }

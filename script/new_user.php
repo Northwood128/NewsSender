@@ -2,27 +2,28 @@
     require 'passwordHash.php';
     require 'validation.php';
 	require 'Config.class.php';
+	require 'sanitization.php';
     
-	$loader = new ConfigLoader();
+	$loader = new ConfigLoader("amazon");
 	$settings = $loader->getDbSettings();
-	$dns = "mysql:host=" . $settings['db']['host'] . ";dbname=NS_users";
+	$dns = "mysql:host=" . $settings['RDS']['endpoint'] . ";dbname=NS_users";
     
     //This data comes from config.html
-    $new_user_data['new_user_mail'] = $_POST['new_user_mail'];
-    $new_user_data['new_user_name'] = $_POST['new_user_name'];
-    $new_user_data['new_user_password'] = $_POST['new_user_password'];
-    $new_user_data['new_user_class'] = $_POST['new_user_class'];
-    
-    //This functions validate the inputs matching the value against RegExp and other logical rules
-    validate_input_email($new_user_data['new_user_mail']);
-    validate_input_name($new_user_data['new_user_name']);
-    validate_input_password($new_user_data['new_user_password']);
-    validate_input_class($new_user_data['new_user_class']);
-    
-    $correct_hash = explode(':', create_hash($new_user_data['new_user_password']));
+    $new_user_data['new_user_mail'] = sanitize($_POST['new_user_mail']);
+    $new_user_data['new_user_name'] = sanitize($_POST['new_user_name']);
+    $new_user_data['new_user_password'] = sanitize($_POST['new_user_password']);
+    $new_user_data['new_user_class'] = sanitize($_POST['new_user_class']);
+	
+	validate_input_email($new_user_data['new_user_mail']);
+	validate_input_name($new_user_data['new_user_name']);
+	validate_input_password($new_user_data['new_user_password']);
+	validate_input_class($new_user_data['new_user_class']);
+	
+    $created_hash = create_hash($new_user_data['new_user_password']);
+    $correct_hash = explode(':', $created_hash);
     
     try {
-        $DB_Handle = new PDO($dns,$settings['db']['user'], $settings['db']['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+        $DB_Handle = new PDO($dns,$settings['RDS']['username'], $settings['RDS']['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
     } catch (PDOException $e) {
         echo 'Error: ' , $e->getMessage(), '\n';//*******************This needs to be changed
     }

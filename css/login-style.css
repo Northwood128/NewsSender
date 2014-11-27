@@ -2,6 +2,7 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #eee;
+  font-family: 'Open Sans', sans-serif;
 }
 .login-form {
   background: #EEE;
@@ -50,11 +51,11 @@ body {
 	background-color: transparent;
 }
 .NS-navbar {
-	background-color: #494;
+	background-color: rgba(0,150,200,1);
 	box-shadow: 0px 3px 5px #000;
 }
 .navbar-nav>li>a:hover{
-	background-color: #484;
+	background-color: rgba(0, 173, 231, 1);
 }
 a {
   color: #333;
@@ -63,7 +64,7 @@ a:hover,
 a:focus {
   color: #333;
   text-decoration: underline;
-  background-color:#448844;
+  background-color: rgba(0, 173, 231, 1);
 }
 #login-failed{
 	display: none;
