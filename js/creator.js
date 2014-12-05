@@ -3,24 +3,15 @@
  */
 
     $('document').ready(function(){
-    	$('textarea').html("");
+    	$('#these').html("");
     	//These two are to enable or disable the textarea#these in the #additionalInputs
-    	$('#optionalRadio1').change(function(){
-    		$('.only-these').toggleClass('disabled');
-    		if ($('#these').attr('disabled')){
-    			$('#these').removeAttr('disabled');
-    		}else{
-    			$('#these').attr('disabled',"");
-    		}
+		$("#optionalRadio1").change(function(){
+			if($(this).is(":selected")){
+				$("#these").prop("disabled", true);
+			}else{
+				$("#these").removeProp("disabled");
+			};
     	});
-    	
-    	$('#optionalRadio2').change(function(){
-    		$('.only-these').toggleClass('disabled');
-    		if ($('#these').attr('disabled')){
-    			$('#these').removeAttr('disabled');
-    		}else{
-    			$('#these').attr('disabled',"");
-    		}
-    	});
-    	
     });
+// && $('#these').attr('disabled')
+
