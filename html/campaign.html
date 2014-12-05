@@ -8,6 +8,7 @@
 		    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		    <script src="../js/creator.js"></script>
+		    <script src="../ckeditor/ckeditor.js"></script>
 		    <title>Crear campaña</title>
 		
 		    <meta name="viewport" content="width=device-width; initial-scale=1.0">
@@ -72,13 +73,13 @@
 	          </div>
 	        </div>
 	      </div>
-	    </nav>
+	    </nav> <!-- End Top Menu -->
 	    
 	    <div class="container">
 	    	<h1>Creador de campañas</h1>
 	    	
 		    	<form id="creator" action="sendMail.php" method="post" enctype="multipart/form-data">
-		    		<div class="container">
+		    		<div class="container" id="ck-container">
 		    			
 			    		<div id="mailInputs">
 				    		<p>
@@ -87,12 +88,13 @@
 					    	</p>
 					    	
 					    	<p>	
-					    		<label for="body">Cuerpo</label>
-					    		<textarea placeholder="Redacte su correo aqui" name="body" id="body" class="form-control" cols="80" rows="25"></textarea>
+					    		<label for="mailBody">Cuerpo</label>
+					    		<textarea placeholder="Redacte su correo aqui" name="mailBody" id="mailBody" class="ckeditor form-control"></textarea>
 					    	</p>
 				    	</div>
-				    	
-				    	<div id="additionalInputs">
+			    	</div>
+			    	<div class="container" id="additionalInputs-contaciner">
+			    		<div id="additionalInputs">
 				    		<label for="test">Email de prueba</label>
 				    		<textarea cols="25" rows="2" placeholder="Mails de prueba" name="test" id="test" class="form-control">
 				    		</textarea>
@@ -112,16 +114,13 @@
 				    			</label>
 				    		</div>
 				    		<div class="only-these disabled">
-					    		<label for="test">Email de prueba</label>
 				    			<textarea cols="25" rows="2" placeholder="Mails de prueba" name="these" id="these" class="form-control" disabled>
 				    			</textarea>
 			    			</div>
 				    	</div>
-				    	
 			    	</div>
 		    	</form>
-
-	    </div>
+			</div>
 	    
 	</body>
 </html>

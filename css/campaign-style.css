@@ -26,3 +26,7 @@ a{
 	min-height:50px;
 	resize:vertical;
 }
+#ck-container {
+	width: 75%;
+	float: left;
+}
