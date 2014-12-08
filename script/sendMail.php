@@ -1,14 +1,16 @@
 <?php
+	require '../vendor/autoload.php';
+	
+	#Namespace for Amazon SES Client
+	use Aws\Ses\SesClient;
+	
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $subject = $_POST['subject'];
 		$mailBody = $_POST['mailBody'];
 		$from = 'northwood128@gmail.com';
 		//App Settings: app_config.ini
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
-		require '../vendor/autoload.php';
-	
-		#Namespace for Amazon SES Client
-		use 'Aws\Ses\SesClient';
+
 	
 		$client = SesClient::factory(array(
     		'region'  => 'us-west-2'
