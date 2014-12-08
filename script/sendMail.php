@@ -12,6 +12,7 @@
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 		$client = SesClient::factory(array(
+			'profile' => 'default',
     		'region'  => 'us-west-2'
 		));
 		
