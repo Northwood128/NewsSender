@@ -81,7 +81,7 @@
 	    <div class="container">
 	    	<h1>Creador de campañas</h1>
 	    	
-		    	<form id="creator" action="sendMail.php" method="post">
+		    	<form id="creator" action="../script/sendMail.php" method="post">
 		    		<div class="container" id="ck-container">
 		    			
 			    		<div id="mailInputs">
