@@ -6,7 +6,7 @@ $(document).ready(function() {
 	
 	$("button").click(function(){
 		var id = $(this).prop("id");
-		window.location = id+".html";
+		window.location = id+".php";
 	});
 	
 	//Dashboard functions
