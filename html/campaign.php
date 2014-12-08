@@ -87,7 +87,7 @@
 			    		<div id="mailInputs">
 				    		<p>
 					    		<label for="subject">Asunto</label>
-					    		<input type="text" class="form-control" placeholder="Asunto" required="required" name"subject" id="subject" />
+					    		<input type="text" class="form-control" placeholder="Asunto" name="subject" id="subject" />
 					    	</p>
 					    	
 					    	<p>	
@@ -98,8 +98,9 @@
 			    				<input type="submit" value="Enviar!" alt="Enviar!" title="Enviar!" class="btn btn-primary"/>
 			    			</div>
 				    	</div>
+				    	
 			    	</div>
-			    	<div class="container" id="additionalInputs-contaciner">
+			    	<div class="container" id="additionalInputs-container">
 			    		<div id="additionalInputs">
 				    		<label for="test">Email de prueba</label>
 				    		<textarea cols="25" rows="2" placeholder="Mails de prueba" name="test" id="test" class="form-control">

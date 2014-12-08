@@ -11,12 +11,11 @@
 		//App Settings: app_config.ini
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 
-	
 		$client = SesClient::factory(array(
     		'region'  => 'us-west-2'
 		));
 		
-			$result = $client->sendEmail(
+		$result = $client->sendEmail(
 		array(
 			// Source is required
 			'Source' => $from,
