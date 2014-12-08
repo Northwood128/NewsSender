@@ -9,8 +9,10 @@
 	use Aws\Ses\SesClient;
 	
 	$client = SesClient::factory(array(
+    	'profile' => 'default',
     	'region'  => 'us-west-2'
 	));
+	$to =array('estefaniagon90@gmail.com', 'notallme1991@hotmail.com','agustinrecalde128@gmail.com','estefaniagon90@hotmail.com');
 	
 	$result = $client->sendEmail(
 		array(
@@ -18,7 +20,7 @@
 			'Source' => 'northwood128@gmail.com',
 			// Destination is required
 			'Destination' => array(
-				'ToAddresses' => array('agustinrecalde128@gmail.com'),
+				'ToAddresses' => $to,
 			),
 			// Message is required
 			'Message' => array(
