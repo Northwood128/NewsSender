@@ -30,3 +30,7 @@ a{
 	width: 75%;
 	float: left;
 }
+.btn-group {
+	float: right;
+	margin-bottom: 10px;
+}

@@ -37,12 +37,13 @@
    $hash_pack = PBKDF2_HASH_ALGORITHM . ':' . PBKDF2_ITERATIONS . ':' . $user_salt['salt'] . ':' . $user_hash['hash'];
    
    if (validate_password($user_data['pwd'], $hash_pack)){
+   	   $_SESSION['token'] = '';
        header('Location: ../html/dashboard.html');
    }
    
    session_destroy();
-   echo create_hash($user_data['pwd']) . "<br />";
-   echo $hash_pack;
+   //echo create_hash($user_data['pwd']) . "<br />";
+   //echo $hash_pack;
    //header('Location: ../html/login.html?login=false');
    
 ?>

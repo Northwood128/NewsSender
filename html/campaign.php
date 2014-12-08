@@ -1,3 +1,6 @@
+<?php
+ 
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -78,7 +81,7 @@
 	    <div class="container">
 	    	<h1>Creador de campañas</h1>
 	    	
-		    	<form id="creator" action="sendMail.php" method="post" enctype="multipart/form-data">
+		    	<form id="creator" action="sendMail.php" method="post">
 		    		<div class="container" id="ck-container">
 		    			
 			    		<div id="mailInputs">
@@ -91,6 +94,9 @@
 					    		<label for="mailBody">Cuerpo</label>
 					    		<textarea placeholder="Redacte su correo aqui" name="mailBody" id="mailBody" class="ckeditor form-control"></textarea>
 					    	</p>
+					    	<div class="btn-group">
+			    				<input type="submit" value="Enviar!" alt="Enviar!" title="Enviar!" class="btn btn-primary"/>
+			    			</div>
 				    	</div>
 			    	</div>
 			    	<div class="container" id="additionalInputs-contaciner">

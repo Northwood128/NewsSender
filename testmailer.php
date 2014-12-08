@@ -9,7 +9,6 @@
 	use Aws\Ses\SesClient;
 	
 	$client = SesClient::factory(array(
-    	'profile' => 'default',
     	'region'  => 'us-west-2'
 	));
 	
