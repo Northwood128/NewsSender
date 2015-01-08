@@ -11,14 +11,14 @@
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
     	$loader = new ConfigLoader("amazon");
         $settings = $loader->getDbSettings();
-   		$dns = "mysql:host=" . $settings['RDS']['endpoint'] . ";dbname=NS";
+   		$dns = "mysql:host=" . trim($settings['RDS']['endpoint']) . ";dbname=NS";
 		
         $subject = $_POST['subject'];
 		$mailBody = $_POST['mailBody'];
 		$from = 'northwood128@gmail.com';//This muy muy bad
 		
 		try {
-             $DB_Handle = new PDO($dns,$settings['RDS']['username'], $settings['RDS']['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+             $DB_Handle = new PDO($dns,trim($settings['RDS']['username']), trim($settings['RDS']['password']), array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 	    	 $stmt = $DB_Handle->prepare("SELECT email FROM subscribers_test WHERE status = 'active'");
 			 $stmt->execute();
 			 $badTo = $stmt->fetchAll();
