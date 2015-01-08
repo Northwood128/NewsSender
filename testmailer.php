@@ -12,7 +12,7 @@
     	'profile' => 'default',
     	'region'  => 'us-west-2'
 	));
-	$to =array('estefaniagon90@gmail.com', 'notallme1991@hotmail.com','agustinrecalde128@gmail.com','estefaniagon90@hotmail.com');
+	
 	
 	$result = $client->sendEmail(
 		array(

@@ -6,7 +6,7 @@
     
 	$loader = new ConfigLoader("amazon");
 	$settings = $loader->getDbSettings();
-	$dns = "mysql:host=" . $settings['RDS']['endpoint'] . ";dbname=NS_users";
+	$dns = "mysql:host=" . $settings['RDS']['endpoint'] . ";dbname=NS";
     
     //This data comes from config.html
     $new_user_data['new_user_mail'] = sanitize($_POST['new_user_mail']);
@@ -34,7 +34,7 @@
     //I'll add a redirect to a nice error page eventually
 
     if ($affected_rows === 0) {
-        header('location: fail.php');
+        header('Location: ../html/success.html');
     } else {
         $uid = $DB_Handle->query("SELECT uid FROM users WHERE username=\"" . $new_user_data['new_user_mail'] . "\"");
         $result = $uid->fetchObject();

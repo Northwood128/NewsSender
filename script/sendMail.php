@@ -1,21 +1,43 @@
 <?php
+	//$settings['RDS']['endpoint']
+	//$settings['RDS']['username']
+	//$settings['RDS']['password']
 	require '../vendor/autoload.php';
+	require 'Config.class.php';
 	
 	#Namespace for Amazon SES Client
 	use Aws\Ses\SesClient;
 	
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    	$loader = new ConfigLoader("amazon");
+        $settings = $loader->getDbSettings();
+   		$dns = "mysql:host=" . "localhost" . ";dbname=NS";
+		
         $subject = $_POST['subject'];
 		$mailBody = $_POST['mailBody'];
-		$from = 'northwood128@gmail.com';
+		$from = 'northwood128@gmail.com';//This bombad bad
+		
+		try {
+             $DB_Handle = new PDO($dns,"root","//*praga800dc*" , array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+        } catch (PDOException $e) {
+             echo 'Error: ' , $e->getMessage(), '\n';//*******************This needs to be changed
+        }
+	    
+		$stmt = $DB_Handle->prepare("SELECT email FROM subscribers_test WHERE status = 'active'");
+		$stmt->execute();
+		$badTo = $stmt->fetchAll();
+		
+		foreach ($badTo as $email) {
+			$to[] = $email['email'];
+		}
 		//App Settings: app_config.ini
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
-
+		
 		$client = SesClient::factory(array(
 			'profile' => 'default',
     		'region'  => 'us-west-2'
 		));
-		$to =array('estefaniagon90@gmail.com', 'notallme1991@hotmail.com','agustinrecalde128@gmail.com','estefaniagon90@hotmail.com');
+		
 		$result = $client->sendEmail(
 		array(
 			// Source is required
