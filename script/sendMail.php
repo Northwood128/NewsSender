@@ -11,7 +11,7 @@
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
     	$loader = new ConfigLoader("amazon");
         $settings = $loader->getDbSettings();
-   		$dns = "mysql:host=" . trim($settings['RDS']['endpoint']) . ";dbname=NS";
+   		$dns = "mysql:host=" . $settings['RDS']['endpoint'] . ";dbname=NS";
 		
         $subject = $_POST['subject'];
 		$mailBody = $_POST['mailBody'];
