@@ -42,7 +42,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="dashboard.html"><img src="logo-placeholder.png" width="150" height="100"></a>
+	          <a class="navbar-brand" href="dashboard.php"><img src="logo-placeholder.png" width="150" height="100"></a>
 	        </div>
 	        <div class="navbar-collapse collapse">
 	          <div class="navbar-container">
