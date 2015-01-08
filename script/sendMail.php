@@ -20,7 +20,8 @@
 		try {
              $DB_Handle = new PDO($dns,$settings['RDS']['username'], $settings['RDS']['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
         } catch (PDOException $e) {
-             echo 'Error: ' , $e->getMessage(), '\n';//*******************This needs to be changed
+             echo 'Error: ' . $e->getMessage() . '\n';
+			 echo $settings['RDS']['username'] ."::". $settings['RDS']['password'];//*******************This needs to be changed
         }
 	    
 		$stmt = $DB_Handle->prepare("SELECT email FROM subscribers_test WHERE status = 'active'");
