@@ -11,14 +11,14 @@
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
     	$loader = new ConfigLoader("amazon");
         $settings = $loader->getDbSettings();
-   		$dns = "mysql:host=" . "localhost" . ";dbname=NS";
+   		$dns = "mysql:host=" . $settings['RDS']['endpoint'] . ";dbname=NS";
 		
         $subject = $_POST['subject'];
 		$mailBody = $_POST['mailBody'];
-		$from = 'northwood128@gmail.com';//This bombad bad
+		$from = 'northwood128@gmail.com';//This muy muy bad
 		
 		try {
-             $DB_Handle = new PDO($dns,"root","//*praga800dc*" , array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+             $DB_Handle = new PDO($dns,$settings['RDS']['username'], $settings['RDS']['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
         } catch (PDOException $e) {
              echo 'Error: ' , $e->getMessage(), '\n';//*******************This needs to be changed
         }
