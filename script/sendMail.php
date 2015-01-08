@@ -11,7 +11,7 @@
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
     	$loader = new ConfigLoader("amazon");
         $settings = $loader->getDbSettings();
-   		$dns = "mysql:host=" . $settings['RDS']['endpoint'] . ";dbname=NS";
+   		$dns = "mysql:host=" . trim($settings['RDS']['endpoint']) . ";dbname=NS";
 		
         $subject = $_POST['subject'];
 		$mailBody = $_POST['mailBody'];
@@ -20,7 +20,7 @@
 		try {
              $DB_Handle = new PDO($dns,$settings['RDS']['username'], $settings['RDS']['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
         } catch (PDOException $e) {
-             echo 'Error: ' . $e->getMessage() . '\n';
+             echo 'Error: ' . $e->getMessage() . "<br />";
 			 echo $settings['RDS']['username'] ."::". $settings['RDS']['password'];//*******************This needs to be changed
         }
 	    
