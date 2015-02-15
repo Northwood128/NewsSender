@@ -10,7 +10,7 @@
        'region'  => 'us-west-2'
    ));
    
-   $result = $client->receiveMessage(array(
+   $result = $sqsClient->receiveMessage(array(
        'QueueUrl'        => $queueUrl,
        'WaitTimeSeconds' => 10,
    ));
