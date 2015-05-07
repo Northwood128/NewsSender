@@ -13,11 +13,16 @@
        'region'  => 'us-west-2'
    ));
    
+   $numberOfMessages = $sqsClient->getQueueAttributes(array(
+       'QueueUrl'        => $queueUrl,
+       'AttributeNames'  => array('ApproximateNumberOfMessages')
+   ));
+   
    $result = $sqsClient->receiveMessage(array(
        'QueueUrl'        => $queueUrl,
        'WaitTimeSeconds' => 20,
    ));
-   
+   echo $numberOfMessages."\n";
 	foreach ($result->getPath('Messages/*/Body') as $messageBody) {
 	    // Do something with the message
 	    echo $messageBody;
