@@ -1,31 +1,25 @@
 <?php
-   require '../vendor/autoload.php';
-   
-   use Aws\Sqs\SqsClient;
-   
-   $queueUrl = 'https://sqs.us-west-2.amazonaws.com/167468132568/NewsSenderBouncesQueue';
-   
-   //App Settings: app_config.ini
-   date_default_timezone_set('America/Argentina/Buenos_Aires');
-   
-   $sqsClient = SqsClient::factory(array(
-       'profile' => 'default',
-       'region'  => 'us-west-2'
-   ));
-   
-   $numberOfMessages = $sqsClient->getQueueAttributes(array(
-       'QueueUrl'        => $queueUrl,
-       'AttributeNames'  => array('ApproximateNumberOfMessages')
-   ));
-   
-   $result = $sqsClient->receiveMessage(array(
-       'QueueUrl'        => $queueUrl,
-       'WaitTimeSeconds' => 20,
-   ));
-   var_dump($numberOfMessages['Attributes']['ApproximateNumberOfMessages']);
-   //echo $cantMsg;
-   foreach ($result->getPath('Messages/*/Body') as $messageBody) {
-	    // Do something with the message
-	    echo $messageBody;
-   }
+require '../vendor/autoload.php';
+
+use Aws\Sqs\SqsClient;
+
+$queueUrl = 'https://sqs.us-west-2.amazonaws.com/167468132568/NewsSenderBouncesQueue';
+
+//App Settings: app_config.ini
+date_default_timezone_set('America/Argentina/Buenos_Aires');
+
+$sqsClient = SqsClient::factory(array('profile' => 'default', 'region' => 'us-west-2'));
+
+$attrResult = $sqsClient -> getQueueAttributes(array('QueueUrl' => $queueUrl, 'AttributeNames' => array('ApproximateNumberOfMessages')));
+
+$attr = $attrResult['Attributes'];
+$numberOfMessages = $attr['ApproximateNumberOfMessages'];
+while ($cantMgs > 0) {
+	$msgResult = $sqsClient -> receiveMessage(array('QueueUrl' => $queueUrl, 'WaitTimeSeconds' => 20, ));
+
+	foreach ($msgResult->getPath('Messages/*/Body') as $messageBody) {
+		// Do something with the message
+		echo $messageBody;
+	}
+}
 ?>
