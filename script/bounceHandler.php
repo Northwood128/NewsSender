@@ -14,7 +14,15 @@ $attrResult = $sqsClient -> getQueueAttributes(array('QueueUrl' => $queueUrl, 'A
 
 $attr = $attrResult['Attributes'];
 $numberOfMessages = $attr['ApproximateNumberOfMessages'];
-while ($numberOfMessages > 0) {
+// while ($numberOfMessages > 0) {
+// $msgResult = $sqsClient -> receiveMessage(array('QueueUrl' => $queueUrl, 'WaitTimeSeconds' => 20, ));
+//
+// foreach ($msgResult->getPath('Messages/*/Body') as $messageBody) {
+// // Do something with the message
+// echo $messageBody;
+// }
+// }
+if ($numberOfMessages == 1) {
 	$msgResult = $sqsClient -> receiveMessage(array('QueueUrl' => $queueUrl, 'WaitTimeSeconds' => 20, ));
 
 	foreach ($msgResult->getPath('Messages/*/Body') as $messageBody) {
