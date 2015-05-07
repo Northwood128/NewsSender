@@ -14,7 +14,7 @@ $attrResult = $sqsClient -> getQueueAttributes(array('QueueUrl' => $queueUrl, 'A
 
 $attr = $attrResult['Attributes'];
 $numberOfMessages = $attr['ApproximateNumberOfMessages'];
-while ($cantMgs > 0) {
+while ($numberOfMessages > 0) {
 	$msgResult = $sqsClient -> receiveMessage(array('QueueUrl' => $queueUrl, 'WaitTimeSeconds' => 20, ));
 
 	foreach ($msgResult->getPath('Messages/*/Body') as $messageBody) {
