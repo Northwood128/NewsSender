@@ -18,5 +18,8 @@
        'WaitTimeSeconds' => 10,
    ));
    
-   var_dump($result);
+	foreach ($result->getPath('Messages/*/Body') as $messageBody) {
+	    // Do something with the message
+	    echo $messageBody;
+	}
 ?>
