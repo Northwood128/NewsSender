@@ -15,7 +15,7 @@
    
    $result = $sqsClient->receiveMessage(array(
        'QueueUrl'        => $queueUrl,
-       'WaitTimeSeconds' => 10,
+       'WaitTimeSeconds' => 20,
    ));
    
 	foreach ($result->getPath('Messages/*/Body') as $messageBody) {
