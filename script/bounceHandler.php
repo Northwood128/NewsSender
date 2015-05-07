@@ -22,10 +22,10 @@
        'QueueUrl'        => $queueUrl,
        'WaitTimeSeconds' => 20,
    ));
-   $numerOfMessages = $numberOfMessages->get('Attributes');
-   echo $numberOfMessages;
-	foreach ($result->getPath('Messages/*/Body') as $messageBody) {
+   $cantMsg = $numberOfMessages['ApproximateNumberOfMessages'];
+   echo $cantMsg;
+   foreach ($result->getPath('Messages/*/Body') as $messageBody) {
 	    // Do something with the message
 	    echo $messageBody;
-	}
+   }
 ?>
