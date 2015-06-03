@@ -16,10 +16,10 @@
 	$result = $client->sendEmail(
 		array(
 			// Source is required
-			'Source' => 'northwood128@gmail.com',
+			'Source' => '',
 			// Destination is required
 			'Destination' => array(
-				'ToAddresses' => array('agustinrecalde128@gmail.com'),
+				'ToAddresses' => array(''),
 			),
 			// Message is required
 			'Message' => array(
