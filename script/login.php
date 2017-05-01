@@ -9,7 +9,7 @@
   //This must be extracted safely from config file. This is just a mock
   $db_settings['dns'] = 'mysql:host=localhost;dbname=NS_users';
   $db_settings['db_user'] = 'root';
-  $db_settings['db_pwd'] = '//*praga800dc*';
+  $db_settings['db_pwd'] = 'dummypass';
   
   try {
       $DB_Handle = new PDO($db_settings['dns'],$db_settings['db_user'],$db_settings['db_pwd'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
